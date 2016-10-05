@@ -1,8 +1,8 @@
 # Screen Capture
 
-This light-weight system tray application periodically takes screenshots.
+This light-weight system tray application periodically takes screenshots. Very convenient for the next Ludum Dare!
 
-![](http://therefactory.bplaced.net/data/powerplanswitcher2.gif)
+![](http://therefactory.bplaced.net/data/screencapture.gif)
 
 You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the latest news on this and other projects of mine.
 
