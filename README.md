@@ -8,7 +8,7 @@ You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the la
 
 ***
 
-**BINARIES**
+**DOWNLOAD**
 
 You can download the latest version here.
 
