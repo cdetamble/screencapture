@@ -1,22 +1,44 @@
-﻿using System;
+﻿// Copyright (C) 2016  ScreenCapture
+// 
+// This file is part of ScreenCapture.
+// 
+// ScreenCapture is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// ScreenCapture is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with ScreenCapture.  If not, see <http://www.gnu.org/licenses/>.
+
+#region
+
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using ScreenCapture.Properties;
 using Timer = System.Threading.Timer;
+
+#endregion
 
 namespace ScreenCapture
 {
     internal class ScreenCapture : Form
     {
-        private int _captureInterval = 5000; // in ms
         private readonly Icon _iconIdle = new Icon(Resources._1475625681_camera_photo, 32, 32);
         private readonly Icon _iconRecording = new Icon(Resources._1475625681_camera_photo_record, 32, 32);
-        private string _outputDirectory;
         private readonly NotifyIcon _trayIcon = new NotifyIcon();
+        private int _captureInterval = 5000; // in ms
+        private string _outputDirectory;
         private Timer _timer;
 
         public ScreenCapture()
@@ -72,7 +94,7 @@ namespace ScreenCapture
 
                 // prompt for capture interval
                 var interval =
-                    Microsoft.VisualBasic.Interaction.InputBox("Please specify the capture interval in milliseconds.",
+                    Interaction.InputBox("Please specify the capture interval in milliseconds.",
                         "Screen Capture", _captureInterval.ToString());
                 if (string.IsNullOrWhiteSpace(interval))
                     return;
@@ -119,7 +141,8 @@ namespace ScreenCapture
                         Screen.PrimaryScreen.Bounds.Size);
                 }
                 Directory.CreateDirectory(_outputDirectory);
-                bmp.Save(_outputDirectory + Path.DirectorySeparatorChar + DateTime.Now.ToFileTime() + ".png", ImageFormat.Png);
+                bmp.Save(_outputDirectory + Path.DirectorySeparatorChar + DateTime.Now.ToFileTime() + ".png",
+                    ImageFormat.Png);
                 bmp.Dispose();
             }
         }
