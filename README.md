@@ -1,24 +1,30 @@
-# Screen Capture
+# Screen Capture ![appicon](ScreenCapture/Resources/1475625681_camera-photo.ico) <a href="https://www.youtube.com/channel/UCShL6kEbNc02XjA89zsrtDQ"><img src="https://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png" height="32px" align="right"></a>
 
-This light-weight system tray application periodically takes screenshots. Very convenient for the next Ludum Dare!
+*This light-weight system tray application periodically takes screenshots. Very convenient for the next Ludum Dare!*
 
-![](http://therefactory.bplaced.net/projects-json/screencapture/screenshots/screencapture.gif)
+[![version](https://img.shields.io/badge/version-1.0.1-2095ff.svg)](CHANGELOG.md) [![license](https://img.shields.io/badge/license-GPL--3.0-2095ff.svg)](LICENSE.md)
+
+
 
 You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the latest news on this and other projects of mine.
 
-***
+![](http://therefactory.bplaced.net/projects-json/screencapture/screenshots/screencapture.gif)
 
-**DOWNLOAD**
+## Download
 
 You can download the latest version here.
 
 * [Screen-Capture-1.0.0.zip](https://github.com/frittatenbank/screencapture/blob/master/ScreenCapture/Publish/Screen-Capture-1.0.0.zip?raw=true)
 
-***
+## License
 
-**LICENSE**
+Copyright &copy; 2016 Christian DeTamble
 
-The camera icon is from the Humility icon set from Andy Fitzsimon which is licensed under GPL.
+Licensed under the GNU General Public License, Version 3.0. See [LICENSE](LICENSE) for details.
+
+    https://www.gnu.org/licenses/gpl-3.0.txt
+
+The camera icon is from the Humility icon set from Andy Fitzsimon which is licensed under GPL-3.0.
 
 http://www.fitzsimon.com.au/
 
