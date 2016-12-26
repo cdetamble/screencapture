@@ -2,7 +2,7 @@
 
 *This light-weight system tray application periodically takes screenshots. Very convenient for the next Ludum Dare!*
 
-[![version](https://img.shields.io/badge/version-1.0.0-2095ff.svg)](CHANGELOG.md) [![license](https://img.shields.io/badge/license-GPL--3.0-2095ff.svg)](LICENSE.md)
+[![version](https://img.shields.io/badge/version-1.1.0-2095ff.svg)](CHANGELOG.md) [![license](https://img.shields.io/badge/license-GPL--3.0-2095ff.svg)](LICENSE.md)
 
 You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the latest news on this and other projects of mine.
 
@@ -10,7 +10,11 @@ You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the la
 
 ## Download
 
-The latest version is always available [here](ScreenCapture/Publish/Screen-Capture-1.0.0.zip?raw=true).
+The latest version is always available [here](ScreenCapture/Publish/Screen-Capture.zip?raw=true).
+
+## Videos made with Screen Capture
+
+<a href="https://www.youtube.com/watch?v=o1BMKgMllBY"><img src="https://img.youtube.com/vi/o1BMKgMllBY/0.jpg"></a>
 
 ## License
 
