@@ -10,7 +10,7 @@ You can follow my <a href="http://goo.gl/KvKHze">development blog</a> for the la
 
 ## Download
 
-The latest version is always available [here](ScreenCapture/Publish/Screen-Capture.zip?raw=true).
+[Screen-Capture.zip](ScreenCapture/Publish/Screen-Capture.zip?raw=true)
 
 ## Videos made with Screen Capture
 
