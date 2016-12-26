@@ -133,4 +133,10 @@
   <data name="ScreenCapture_ScreenCapture_Screen_Capture" xml:space="preserve">
     <value>Screen Capture</value>
   </data>
+  <data name="ScreenCapture_OnStartStop_Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="ScreenCapture_OnStartStop_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
 </root>

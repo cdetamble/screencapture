@@ -40,16 +40,20 @@ namespace ScreenCapture
         private int _captureInterval = 5000; // in ms
         private string _outputDirectory;
         private Timer _timer;
+        private readonly ContextMenu _trayMenu;
+        private int _counter;
 
         public ScreenCapture()
         {
             // create menu
-            var trayMenu = new ContextMenu();
-            trayMenu.MenuItems.Add(Resources.ScreenCapture_OnStartStop_Start, OnStartStop);
-            trayMenu.MenuItems.Add("Show", OnShow);
-            trayMenu.MenuItems.Add("-");
-            trayMenu.MenuItems.Add("Exit", OnExit);
-            //trayMenu.MenuItems[0].DefaultItem = true;
+            _trayMenu = new ContextMenu();
+            _trayMenu.MenuItems.Add(Resources.ScreenCapture_OnStartStop_Start, OnStartPauseResume);
+            _trayMenu.MenuItems.Add("Stop", OnStop);
+            _trayMenu.MenuItems.Add("Show", OnShow);
+            _trayMenu.MenuItems.Add("-");
+            _trayMenu.MenuItems.Add("Exit", OnExit);
+            _trayMenu.MenuItems[0].DefaultItem = true;
+            _trayMenu.MenuItems[1].Visible = false;
 
             // create systray icon
             _trayIcon.Text = Resources.ScreenCapture_ScreenCapture_Screen_Capture;
@@ -57,8 +61,19 @@ namespace ScreenCapture
             _trayIcon.MouseClick += NotifyIcon_MouseClick;
 
             // add menu to systray icon
-            _trayIcon.ContextMenu = trayMenu;
+            _trayIcon.ContextMenu = _trayMenu;
             _trayIcon.Visible = true;
+        }
+
+        private void OnStop(object sender, EventArgs e)
+        {
+            var startStopMenuItem = (MenuItem)sender;
+            _timer.Dispose();
+            startStopMenuItem.DefaultItem = false;
+            _trayMenu.MenuItems[0].Text = Resources.ScreenCapture_OnStartStop_Start;
+            _trayIcon.Icon = _iconIdle;
+            startStopMenuItem.Visible = false;
+            _counter = 0;
         }
 
         private void OnShow(object sender, EventArgs e)
@@ -83,7 +98,7 @@ namespace ScreenCapture
             Application.Run(new ScreenCapture());
         }
 
-        private void OnStartStop(object sender, EventArgs e)
+        private void OnStartPauseResume(object sender, EventArgs e)
         {
             var startStopMenuItem = (MenuItem) sender;
             if (startStopMenuItem.Text.Equals(Resources.ScreenCapture_OnStartStop_Start))
@@ -99,25 +114,35 @@ namespace ScreenCapture
                 if (string.IsNullOrWhiteSpace(interval))
                     return;
 
-                try
-                {
-                    _captureInterval = Convert.ToInt32(interval);
-                    _timer = new Timer(CheckCondition, null, 0, _captureInterval);
-                    startStopMenuItem.Text = Resources.ScreenCapture_OnStartStop_Pause;
-                    startStopMenuItem.DefaultItem = true;
-                    _trayIcon.Icon = _iconRecording;
-                }
-                catch (FormatException ex)
-                {
-                    MessageBox.Show(this, ex.Message, @"Screen Capture");
-                }
+                _captureInterval = Convert.ToInt32(interval);
+                
+                ResumeCapturing(startStopMenuItem);
             }
             else if (startStopMenuItem.Text.Equals(Resources.ScreenCapture_OnStartStop_Pause))
             {
                 _timer.Dispose();
-                startStopMenuItem.DefaultItem = false;
-                startStopMenuItem.Text = Resources.ScreenCapture_OnStartStop_Start;
+                startStopMenuItem.Text = Resources.ScreenCapture_OnStartStop_Resume;
                 _trayIcon.Icon = _iconIdle;
+            }
+            else if (startStopMenuItem.Text.Equals(Resources.ScreenCapture_OnStartStop_Resume))
+            {
+                ResumeCapturing(startStopMenuItem);
+            }
+        }
+
+        private void ResumeCapturing(MenuItem startStopMenuItem)
+        {
+            try
+            {
+                _timer = new Timer(CheckCondition, null, 0, _captureInterval);
+                startStopMenuItem.Text = Resources.ScreenCapture_OnStartStop_Pause;
+                startStopMenuItem.DefaultItem = true;
+                _trayIcon.Icon = _iconRecording;
+                _trayMenu.MenuItems[1].Visible = true;
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(this, ex.Message, @"Screen Capture");
             }
         }
 
@@ -141,9 +166,11 @@ namespace ScreenCapture
                         Screen.PrimaryScreen.Bounds.Size);
                 }
                 Directory.CreateDirectory(_outputDirectory);
-                bmp.Save(_outputDirectory + Path.DirectorySeparatorChar + DateTime.Now.ToFileTime() + ".png",
+                bmp.Save(_outputDirectory + Path.DirectorySeparatorChar +
+                    DateTime.Now.ToFileTime() + "_" + _counter + ".png",
                     ImageFormat.Png);
                 bmp.Dispose();
+                _counter++;
             }
         }
 

@@ -90,11 +90,29 @@ namespace ScreenCapture.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        internal static string ScreenCapture_OnStartStop_Resume {
+            get {
+                return ResourceManager.GetString("ScreenCapture_OnStartStop_Resume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.
         /// </summary>
         internal static string ScreenCapture_OnStartStop_Start {
             get {
                 return ResourceManager.GetString("ScreenCapture_OnStartStop_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        internal static string ScreenCapture_OnStartStop_Stop {
+            get {
+                return ResourceManager.GetString("ScreenCapture_OnStartStop_Stop", resourceCulture);
             }
         }
         
