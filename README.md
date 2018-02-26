@@ -1,4 +1,4 @@
-# Screen Capture ![appicon](ScreenCapture/Resources/1475625681_camera-photo.ico) <a href="https://www.youtube.com/channel/UCShL6kEbNc02XjA89zsrtDQ"><img src="https://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png" height="32px" align="right"></a>
+# Screen Capture ![appicon](ScreenCapture/Resources/1475625681_camera-photo.ico) <a href="https://www.youtube.com/channel/UCShL6kEbNc02XjA89zsrtDQ"><img src="http://therefactory.bplaced.net/img/youtube_hover.png" height="32px" align="right"></a>
 
 *This light-weight system tray application periodically takes screenshots. Very convenient for the next Ludum Dare!*
 
